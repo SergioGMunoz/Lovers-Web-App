@@ -1,0 +1,12 @@
+:root {
+  /* colors */
+  --color-text: #ffffff;
+  --color-primary: #FE5594;
+  --color-secondary: #FF89B5;
+
+  /* typography */
+  --font-sans: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  --fs-14: .875rem;
+  --fs-16: 1rem;
+  --fs-18: 1.125rem;
+}
