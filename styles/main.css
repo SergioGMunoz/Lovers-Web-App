@@ -1,0 +1,56 @@
+/* colors */
+
+:root {
+  --color-text: #ffffff;
+  --color-primary: #FE5594;
+  --color-secondary: #FF89B5;
+}
+
+/* Text */
+
+h1 {
+    font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+    color: #FE5594;
+}
+
+p {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 0.7rem;
+}
+
+/* NavBar */
+
+nav, .nav-logo, .nav-buttons{
+    display: flex;
+    flex-direction: row;    
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-logo, .nav-buttons{
+    width: 50%;
+    margin: 0 2rem;
+}
+
+.nav-buttons{
+    justify-content: end;
+}
+
+.logo-img{
+    width: 5rem;
+}
+
+.btn-primary{
+    color: white;
+    background-color: #FE5594;
+    border: 0;
+    border-radius: 0.3rem;
+    padding: 1rem 1.5rem;
+    transition: background-color 0.3s ease; 
+}
+
+.btn-primary:hover{
+    background-color: #FF89B5;
+    cursor: pointer;
+}
