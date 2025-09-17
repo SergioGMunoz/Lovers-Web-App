@@ -88,7 +88,7 @@ export const createFormHobbies = () => {
       <input type="text" placeholder="Hobby 1" class="input-text hobby-input">
       <input type="text" placeholder="Hobby 2" class="input-text hobby-input">
       <input type="text" placeholder="Hobby 3" class="input-text hobby-input">
-      <button type="submit" class="btn-form hobbies-continue">Continuar</button>
+      <button disabled type="submit" class="btn-form hobbies-continue">Continuar</button>
     </form>`;
   return element;
 };

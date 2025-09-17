@@ -110,7 +110,8 @@ export const step6Hobbies = () => {
 
   // Checking if the first hobbie is okey
   const checkValid = () => {
-    if (val.validateName(inputs[0])) {
+    console.log('Hobbie 1 VALUE:', inputs[0].value)
+    if (val.validateName(inputs[0].value)) {
       btnContinue.removeAttribute("disabled");
     } else {
       btnContinue.setAttribute("disabled", "true");
