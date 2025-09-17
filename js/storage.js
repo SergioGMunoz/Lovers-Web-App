@@ -1,7 +1,6 @@
 // This page manage the storage
 export const storageData = (key, value) => {
     localStorage.setItem(key, value);
-    console.log('hola mundo')
     console.log(`${key}:${value} correctly uploaded`)
 }
 
