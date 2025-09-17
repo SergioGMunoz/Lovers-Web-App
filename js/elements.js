@@ -88,37 +88,8 @@ export const createFormHobbies = () => {
       <input type="text" placeholder="Hobby 1" class="input-text hobby-input">
       <input type="text" placeholder="Hobby 2" class="input-text hobby-input">
       <input type="text" placeholder="Hobby 3" class="input-text hobby-input">
-      <button type="submit" class="btn-form hobbies-continue">Continuar</button>
+      <button disabled type="submit" class="btn-form hobbies-continue">Continuar</button>
     </form>`;
-  return element;
-};
-
-// Photos
-export const createFormPhotos = () => {
-  const element = document.createElement("section");
-  element.className = "col-section";
-  element.innerHTML = `<h1>Tus mejores fotos... 📸</h1>
-    <div class="photos-grid">
-      <div class="photo-upload">
-        <input type="file" accept="image/*" id="photo1" class="photo-input" hidden>
-        <label for="photo1" class="photo-label">
-          <img src="resources/img/import-photo.png" class="placeholder-img">
-        </label>
-      </div>
-      <div class="photo-upload">
-        <input type="file" accept="image/*" id="photo2" class="photo-input" hidden>
-        <label for="photo2" class="photo-label">
-          <img src="resources/img/import-photo.png" class="placeholder-img">
-        </label>
-      </div>
-      <div class="photo-upload">
-        <input type="file" accept="image/*" id="photo3" class="photo-input" hidden>
-        <label for="photo3" class="photo-label">
-          <img src="resources/img/import-photo.png" class="placeholder-img">
-        </label>
-      </div>
-    </div>
-    <button class="btn-form photos-continue">Continuar</button>`;
   return element;
 };
 
