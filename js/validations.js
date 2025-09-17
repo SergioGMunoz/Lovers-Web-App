@@ -1,8 +1,10 @@
-// Validator functions
+// Name
 export const validateName = (name) => {
-  return name.trim().length > 0;
+    const length = name.trim().length;
+  return length > 0 && length < 15;
 };
 
+// Mail
 export const validateEmail = (email) => {
   // El regex profesional lo he sacado de esta pagina:
   // https://www.mailercheck.com/articles/email-validation-javascript
