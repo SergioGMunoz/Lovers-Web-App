@@ -1,5 +1,5 @@
-import { createTitle } from "./pages/elements.js";
-import {step1Name} from "./form.js";
+import { createTitle } from "./elements.js";
+import { step1Name } from "./form.js";
 
 console.log("Contected To JS");
 

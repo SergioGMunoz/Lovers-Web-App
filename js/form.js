@@ -1,9 +1,6 @@
-import { createFormName } from "./pages/elements.js";
-import { storageData } from "./storage.js"; 
-
-const validateName = (name) => {
-    return (name.trim().length > 0);
-};
+import { createFormName, createFormMail } from "./elements.js";
+import { storageData } from "./storage.js";
+import { validateName, validateEmail } from "./validations.js";
 
 // Step 1 - Name
 export const step1Name = () => {
@@ -11,6 +8,7 @@ export const step1Name = () => {
     document.querySelector('main').innerHTML = createFormName().outerHTML;
 
     // Get the elements
+    const formEl = document.querySelector("form");
     const btnContinue = document.querySelector('.name-continue')
     const input = document.querySelector('.input-text')
 
@@ -26,7 +24,6 @@ export const step1Name = () => {
         }
     })
 
-    const formEl = document.querySelector("form");
 
     formEl.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -36,9 +33,31 @@ export const step1Name = () => {
     })
 }
 
-// Step 2
-const step2Mail = () => {
-   console.log('Step 2')
+// Step 2 - Mail
+export const step2Mail = () => {
+   document.querySelector('main').innerHTML = createFormMail().outerHTML;
+
+   const formEl = document.querySelector('form');
+   const input = document.querySelector('input[name="mail"]');
+   const btnContinue = document.querySelector('.mail-continue');
+
+   input.addEventListener('input', () => {
+       const isValid = validateEmail(input.value);
+       console.log('mail', input.value, 'valid', isValid);
+       if (isValid) {
+           btnContinue.removeAttribute('disabled');
+       } else {
+           btnContinue.setAttribute('disabled', 'true');
+       }
+   });
+
+   formEl.addEventListener('submit', (e) => {
+       e.preventDefault();
+       if (!validateEmail(input.value)) return;
+       storageData('mail', input.value.trim());
+       console.log('Mail guardado, continuar al siguiente paso');
+       // TODO: llamar a la siguiente función (p. ej. step3Gender) cuando exista
+   });
 }
 
 
