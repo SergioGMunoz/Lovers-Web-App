@@ -2,9 +2,8 @@ import { createFormName } from "./pages/elements.js";
 import { storageData } from "./storage.js"; 
 
 const validateName = (name) => {
-  return name && name.trim().lenght > 0;
+    return (name.trim().length > 0);
 };
-
 
 // Step 1 - Name
 export const step1Name = () => {
@@ -16,14 +15,23 @@ export const step1Name = () => {
     const input = document.querySelector('.input-text')
 
     // Create the listeners
-    input.addEventListener('key_pressed', () => {
-        if (validateName(input.value)) btnContinue.setAttribute('enabled')
+    input.addEventListener('keyup', () => {
+        console.log('name', input.value)
+        console.log('valid name', validateName(input.value))
+        // btnContinue.setAttribute('disabled', 'false')
+        if (validateName(input.value)){
+            btnContinue.removeAttribute("disabled");
+        }else{
+            btnContinue.setAttribute("disabled", "true");
+        }
     })
 
-    btnContinue.addEventListener('submit', (e) => {
+    const formEl = document.querySelector("form");
+
+    formEl.addEventListener('submit', (e) => {
         e.preventDefault();
         // Storage
-        storageData('name', validateName(input.value));
+        storageData('name', input.value);
         step2Mail()
     })
 }
