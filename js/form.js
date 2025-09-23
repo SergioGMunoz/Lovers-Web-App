@@ -6,7 +6,7 @@ import { goProfile } from "./profile.js";
 // Step 1 - Name
 export const step1Name = () => {
   // Render the name form
-  document.querySelector("main").innerHTML = el.createFormName().outerHTML;
+  document.querySelector("#form-section").innerHTML = el.createFormName().outerHTML;
 
   // Get the elements
   const formEl = document.querySelector("form");
@@ -33,7 +33,7 @@ export const step1Name = () => {
 
 // Step 2 - Mail
 export const step2Mail = () => {
-  document.querySelector("main").innerHTML = el.createFormMail().outerHTML;
+  document.querySelector("#form-section").innerHTML = el.createFormMail().outerHTML;
 
   const formEl = document.querySelector("form");
   const input = document.querySelector('input[name="mail"]');
@@ -58,7 +58,7 @@ export const step2Mail = () => {
 
 // Step 3 - Gender
 export const step3Gender = () => {
-  document.querySelector("main").innerHTML = el.createFormGender().outerHTML;
+  document.querySelector("#form-section").innerHTML = el.createFormGender().outerHTML;
 
   const genderButtons = document.querySelectorAll(".btn-gender");
   genderButtons.forEach((btn) => {
@@ -72,7 +72,7 @@ export const step3Gender = () => {
 
 // Step 4 - Orientation
 export const step4Orientation = () => {
-  document.querySelector("main").innerHTML =
+  document.querySelector("#form-section").innerHTML =
     el.createFormOrientation().outerHTML;
 
   const orientationButtons = document.querySelectorAll(".btn-orientation");
@@ -87,7 +87,7 @@ export const step4Orientation = () => {
 
 // Step 5 - Relation Type
 export const step5RelationType = () => {
-  document.querySelector("main").innerHTML =
+  document.querySelector("#form-section").innerHTML =
     el.createFormRelationType().outerHTML;
 
   const relationButtons = document.querySelectorAll(".btn-relation");
@@ -102,7 +102,7 @@ export const step5RelationType = () => {
 
 // Step 6 - Hobbies
 export const step6Hobbies = () => {
-  document.querySelector("main").innerHTML = el.createFormHobbies().outerHTML;
+  document.querySelector("#form-section").innerHTML = el.createFormHobbies().outerHTML;
 
   const formEl = document.querySelector("form");
   const btnContinue = document.querySelector(".hobbies-continue");
@@ -132,7 +132,7 @@ export const step6Hobbies = () => {
 
 // Step 7 - Bio
 export const step7Bio = () => {
-  document.querySelector("main").innerHTML = el.createFormBio().outerHTML;
+  document.querySelector("#form-section").innerHTML = el.createFormBio().outerHTML;
 
   const textarea = document.querySelector(".bio-input");
   const btn = document.querySelector(".bio-continue");
