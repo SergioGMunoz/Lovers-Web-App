@@ -12,6 +12,15 @@ export const createTitle = (msg) => {
 };
 
 // Form Section
+// Control buttons
+const formControlls = `
+  <div class="form-controls">
+    <button type="button" class="btn-form btn-back">Atrás</button>
+    <button type="reset" class="btn-form btn-restart">Resetear</button>
+    <button type="submit" class="btn-form btn-continue">Continuar</button>
+  </div>
+`;
+
 // Name
 export const createFormName = () => {
   const element = document.createElement("section");
@@ -19,7 +28,7 @@ export const createFormName = () => {
   element.innerHTML = `<h1>Tu nombre es... 🙂</h1>
         <form>
           <input type="text" name="name" class="input-text">
-          <button disabled type="submit" class="btn-form name-continue">Continuar</button>
+          ${formControlls}
         </form>`;
   return element;
 };
@@ -31,7 +40,7 @@ export const createFormMail = () => {
   element.innerHTML = `<h1>Tu mejor mail... ✉️</h1>
         <form>
           <input type="mail" name="mail" class="input-text">
-          <button disabled type="submit" class="btn-form mail-continue">Continuar</button>
+          ${formControlls}
         </form>`;
   return element;
 };

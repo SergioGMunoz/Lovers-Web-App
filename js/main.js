@@ -1,5 +1,5 @@
 import { createTitle } from "./elements.js";
-import { step1Name } from "./form.js";
+import { renderForm} from "./form.js";
 
 // Rendering the page with the info
 document.querySelector("main").innerHTML = createTitle(
@@ -11,6 +11,7 @@ const signUpBtns = document.querySelectorAll(".btn-sign-up");
 signUpBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     console.log("click btn sign up");
-    step1Name();
+    // TODO: Set the step correctly
+    renderForm();
   });
 });

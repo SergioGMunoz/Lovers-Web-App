@@ -139,6 +139,17 @@ footer {
 }
 
 form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-controls{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
   justify-content: center;
   align-items: center;
 }
