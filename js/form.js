@@ -3,156 +3,134 @@ import { storageData } from "./storage.js";
 import * as val from "./validations.js";
 import { goProfile } from "./profile.js";
 
-// Step 1 - Name
-export const step1Name = () => {
-  // Render the name form
-  document.querySelector("#form-section").innerHTML = el.createFormName().outerHTML;
+export let step = 0;
 
-  // Get the elements
-  const formEl = document.querySelector("form");
-  const btnContinue = document.querySelector(".name-continue");
-  const input = document.querySelector(".input-text");
-
-  // Create the listeners
-  input.addEventListener("keyup", () => {
-    // btnContinue.setAttribute('disabled', 'false')
-    if (val.validateName(input.value)) {
-      btnContinue.removeAttribute("disabled");
-    } else {
-      btnContinue.setAttribute("disabled", "true");
-    }
-  });
-
-  formEl.addEventListener("submit", (e) => {
-    e.preventDefault();
-    // Storage
-    storageData("name", input.value);
-    step2Mail();
-  });
+// The function that starts the form
+export const renderForm = () => {
+  steps[step]();
 };
 
-// Step 2 - Mail
-export const step2Mail = () => {
-  document.querySelector("#form-section").innerHTML = el.createFormMail().outerHTML;
-
-  const formEl = document.querySelector("form");
-  const input = document.querySelector('input[name="mail"]');
-  const btnContinue = document.querySelector(".mail-continue");
-
-  input.addEventListener("input", () => {
-    const isValid = val.validateEmail(input.value);
-    if (isValid) {
-      btnContinue.removeAttribute("disabled");
-    } else {
-      btnContinue.setAttribute("disabled", "true");
-    }
-  });
-
-  formEl.addEventListener("submit", (e) => {
-    e.preventDefault();
-    if (!val.validateEmail(input.value)) return;
-    storageData("mail", input.value.trim());
-    step3Gender();
-  });
+const nextStep = () => {
+  step++;
+  renderForm();
 };
 
-// Step 3 - Gender
-export const step3Gender = () => {
-  document.querySelector("#form-section").innerHTML = el.createFormGender().outerHTML;
+const steps = [
+  // step 1 - Name
+  () => {
+    // Render the name form
+    document.querySelector("main").innerHTML = el.createFormName().outerHTML;
+    
+    // Elements
+    const input = document.querySelector(".input-text");
+    const form = document.querySelector("form");
+    const btnBack = document.querySelector(".btn-back");
+    const btnContinue = document.querySelector(".btn-continue");
 
-  const genderButtons = document.querySelectorAll(".btn-gender");
-  genderButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const value = btn.getAttribute("data-gender");
-      storageData("gender", value);
-      step4Orientation();
+    // Disable because is the first step
+    btnBack.setAttribute("disabled", "true");
+
+    // Create the listeners
+    input.addEventListener("keyup", () => {
+      if (val.validateName(input.value)) {
+        console.log("Valid");
+        btnContinue.removeAttribute("disabled");
+      } else {
+        console.log("NOT Valid");
+        btnContinue.setAttribute("disabled", "true");
+      }
     });
-  });
-};
 
-// Step 4 - Orientation
-export const step4Orientation = () => {
-  document.querySelector("#form-section").innerHTML =
-    el.createFormOrientation().outerHTML;
+    // Form controls 
+    form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          storageData("name", input.value.trim());
+          nextStep();
+      });
+  },
 
-  const orientationButtons = document.querySelectorAll(".btn-orientation");
-  orientationButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const value = btn.getAttribute("data-orientation");
-      storageData("orientation", value);
-      step5RelationType();
+  // step 2 - Mail
+  () => {
+    document.querySelector("main").innerHTML = el.createFormMail().outerHTML;
+
+    const input = document.querySelector('input[name="mail"]');
+    const formEl = document.querySelector("form");
+    const btnBack = document.querySelector(".btn-back");
+    const btnContinue = document.querySelector(".btn-continue");
+
+    input.addEventListener("input", () => {
+      if (val.validateEmail(input.value)) {
+        btnContinue.removeAttribute("disabled");
+      } else {
+        btnContinue.setAttribute("disabled", "true");
+      }
     });
-  });
-};
 
-// Step 5 - Relation Type
-export const step5RelationType = () => {
-  document.querySelector("#form-section").innerHTML =
-    el.createFormRelationType().outerHTML;
-
-  const relationButtons = document.querySelectorAll(".btn-relation");
-  relationButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const value = btn.getAttribute("data-relation");
-      storageData("relationType", value);
-      step6Hobbies();
+    formEl.addEventListener("submit", (e) => {
+      e.preventDefault();
+      storageData("mail", input.value.trim());
+      nextStep();
     });
-  });
-};
 
-// Step 6 - Hobbies
-export const step6Hobbies = () => {
-  document.querySelector("#form-section").innerHTML = el.createFormHobbies().outerHTML;
+    btnBack.addEventListener('click', () => {
+      console.log('Volviendo atras');
+      step--;
+      renderForm();
+    });
+  },
+  // step 3 - TODO
+  () => {
+    document.querySelector("main").innerHTML = el.createFormHobbies().outerHTML;
 
-  const formEl = document.querySelector("form");
-  const btnContinue = document.querySelector(".hobbies-continue");
-  const inputs = Array.from(document.querySelectorAll(".hobby-input"));
+    const formEl = document.querySelector("form");
+    const btnContinue = document.querySelector(".hobbies-continue");
+    const inputs = Array.from(document.querySelectorAll(".hobby-input"));
 
-  // Checking if the first hobbie is okey
-  const checkValid = () => {
-    console.log('Hobbie 1 VALUE:', inputs[0].value)
-    if (val.validateName(inputs[0].value)) {
-      btnContinue.removeAttribute("disabled");
-    } else {
-      btnContinue.setAttribute("disabled", "true");
-    }
-  };
+    // Checking if the first hobbie is okey
+    const checkValid = () => {
+      console.log("Hobbie 1 VALUE:", inputs[0].value);
+      if (val.validateName(inputs[0].value)) {
+        btnContinue.removeAttribute("disabled");
+      } else {
+        btnContinue.setAttribute("disabled", "true");
+      }
+    };
 
-  inputs.forEach((i) => i.addEventListener("input", checkValid));
+    inputs.forEach((i) => i.addEventListener("input", checkValid));
 
-  formEl.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const hobbies = inputs
-      .map((hobbie) => hobbie.value.trim())
-      .filter((hobbie) => hobbie.length > 0);
-    storageData("hobbies", hobbies);
-    step7Bio();
-  });
-};
+    formEl.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const hobbies = inputs
+        .map((hobbie) => hobbie.value.trim())
+        .filter((hobbie) => hobbie.length > 0);
+      storageData("hobbies", hobbies);
+      step7Bio();
+    });
+  },
+  // Step BIO
+  () => {
+    document.querySelector("main").innerHTML = el.createFormBio().outerHTML;
 
-// Step 7 - Bio
-export const step7Bio = () => {
-  document.querySelector("#form-section").innerHTML = el.createFormBio().outerHTML;
+    const textarea = document.querySelector(".bio-input");
+    const btn = document.querySelector(".bio-continue");
 
-  const textarea = document.querySelector(".bio-input");
-  const btn = document.querySelector(".bio-continue");
+    const check = () => {
+      const text = textarea.value.trim();
+      if (text.length >= 10 && text.length <= 280) {
+        btn.removeAttribute("disabled");
+      } else {
+        btn.setAttribute("disabled", "true");
+      }
+    };
 
-  const check = () => {
-    const text = textarea.value.trim();
-    if (text.length >= 10 && text.length <= 280) {
-      btn.removeAttribute("disabled");
-    } else {
-      btn.setAttribute("disabled", "true");
-    }
-  };
+    textarea.addEventListener("keyup", check);
 
-  textarea.addEventListener("keyup", check);
-
-  const formEl = document.querySelector(".bio-form");
-  formEl.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const bio = textarea.value.trim();
-    storageData("bio", bio);
-    goProfile();
-  });
-};
+    const formEl = document.querySelector(".bio-form");
+    formEl.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const bio = textarea.value.trim();
+      storageData("bio", bio);
+      goProfile();
+    });
+  },
+];
