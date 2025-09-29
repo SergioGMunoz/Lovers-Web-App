@@ -1,4 +1,4 @@
-const Footer = () => {
+export const Footer = () => {
   return (
     <footer>
       <p>Creado por Sergio G. Muñoz</p>

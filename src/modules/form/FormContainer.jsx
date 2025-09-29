@@ -1,12 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import FormName from './FormName';
 import FormEmail from './FormEmail';
 
-const FormContainer = () => {
-  const [currentStep, setCurrentStep] = useState(0);
+const FormContainer = ({ initialStep = 0, onComplete }) => {
+  const [currentStep, setCurrentStep] = useState(initialStep);
+
+  // Si cambia el initialStep, actualizar currentStep
+  useEffect(() => {
+    setCurrentStep(initialStep);
+  }, [initialStep]);
 
   const nextStep = () => {
-    setCurrentStep(prevStep => prevStep + 1);
+    const newStep = currentStep + 1;
+    setCurrentStep(newStep);
+    
+    // Si llegamos al final, notificar que se completó
+    if (newStep > 1) { // Cambia esto cuando tengas más steps
+      onComplete && onComplete();
+    }
   };
 
   const prevStep = () => {

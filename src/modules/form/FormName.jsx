@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { validateName } from '../../utils/validations';
 import { storageData } from '../../utils/storage';
 
-const FormName = ({ onNext, onBack, isFirstStep }) => {
+const FormName = ({ onNext, onBack }) => {
   const [name, setName] = useState('');
   const [isValid, setIsValid] = useState(false);
 
@@ -37,7 +37,7 @@ const FormName = ({ onNext, onBack, isFirstStep }) => {
           <button 
             type="button" 
             className="btn-form btn-back"
-            disabled={isFirstStep}
+            disabled={true}
             onClick={onBack}
           >
             Atrás

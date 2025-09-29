@@ -1,6 +1,26 @@
 import logoLovers from '../assets/logo_lovers.png'
+import Button from './Button'
+import { checkProfileCompletion } from '../utils/profileUtils'
 
-const Header = () => {
+const Header = ({ onNavigate }) => {
+  
+  const handleCreateAccount = () => {
+    // Ir al formulario desde el principio o continuar donde se quedó
+    onNavigate('form');
+  };
+
+  const handleViewProfile = () => {
+    const profileStatus = checkProfileCompletion();
+    
+    if (profileStatus.isComplete) {
+      // Si el perfil está completo, mostrar perfil
+      onNavigate('profile');
+    } else {
+      // Si no está completo, mostrar mensaje de error
+      onNavigate('error');
+    }
+  };
+
   return (
     <header>
       <nav>
@@ -9,10 +29,14 @@ const Header = () => {
         </div>
         <div className="nav-buttons">
           <div>
-            <button className="btn-primary btn-sign-up">Crear cuenta</button>
+            <Button onClick={handleCreateAccount}>
+              Crear cuenta
+            </Button>
           </div>
           <div>
-            <button id="profile-btn" className="btn-primary">Mi perfil</button>
+            <Button onClick={handleViewProfile}>
+              Mi perfil
+            </Button>
           </div>
         </div>
       </nav>
