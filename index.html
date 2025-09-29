@@ -2,18 +2,9 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/src/assets/logo_lovers.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lovers</title>
-
-    <!-- Metadata -->
-    <link rel="icon" href="resources/img/logo_lovers.png" />
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="styles/main.css" />
-
-    <!-- JavaScript -->
-    <script type="module" src="js/main.js" defer></script>
-
     <!-- Typography -->
     <link
       href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap"
@@ -21,33 +12,7 @@
     />
   </head>
   <body>
-    <!-- NavBar -->
-    <header>
-      <nav>
-        <div class="nav-logo">
-          <a><img class="logo-img" src="resources/img/logo_lovers.png" /></a>
-        </div>
-        <div class="nav-buttons">
-          <div>
-            <button class="btn-primary btn-sign-up">Crear cuenta</button>
-          </div>
-          <div>
-            <button id="profile-btn" class="btn-primary">Mi perfil</button>
-          </div>
-        </div>
-      </nav>
-    </header>
-
-    <!-- Main Section - JS renders here-->
-    <main>
-      <section id="form-section" class="col-section">
-        
-      </section>
-    </main>
-
-    <!-- Footer  -->
-    <footer>
-      <p>Creado por Sergio G. Muñoz</p>
-    </footer>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
