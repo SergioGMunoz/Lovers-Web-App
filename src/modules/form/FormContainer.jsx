@@ -1,61 +1,36 @@
-import { useState, useEffect } from 'react';
-import FormName from './FormName';
-import FormEmail from './FormEmail';
+import { useState } from "react";
+import FormName from "./FormName";
+import FormEmail from "./FormEmail";
+import FormCompleted from "./FormCompleted";
+import { getStep } from "../../utils/storage";
 
-const FormContainer = ({ initialStep = 0, onComplete }) => {
-  const [currentStep, setCurrentStep] = useState(initialStep);
-
-  // Si cambia el initialStep, actualizar currentStep
-  useEffect(() => {
-    setCurrentStep(initialStep);
-  }, [initialStep]);
+const FormContainer = ({ onNavigate }) => {
+  const [step, setStep] = useState(getStep());
 
   const nextStep = () => {
-    const newStep = currentStep + 1;
-    setCurrentStep(newStep);
-    
-    // Si llegamos al final, notificar que se completó
-    if (newStep > 1) { // Cambia esto cuando tengas más steps
-      onComplete && onComplete();
-    }
+    setStep(step + 1);
   };
 
   const prevStep = () => {
-    setCurrentStep(prevStep => Math.max(0, prevStep - 1));
+    if (step > 0) setStep(step - 1);
   };
 
-  const renderCurrentStep = () => {
-    switch (currentStep) {
+  const renderStep = () => {
+    switch (step) {
       case 0:
         return (
-          <FormName 
-            onNext={nextStep}
-            onBack={prevStep}
-            isFirstStep={true}
-          />
+          <FormName onNext={nextStep} onBack={prevStep} isFirstStep={true} />
         );
       case 1:
         return (
-          <FormEmail 
-            onNext={nextStep}
-            onBack={prevStep}
-          />
+          <FormEmail onNext={nextStep} onBack={prevStep} />
         );
       default:
-        return (
-          <div className="col-section">
-            <h1>¡Formulario completado! 🎉</h1>
-            <p>Has completado los primeros pasos del registro.</p>
-          </div>
-        );
+        return <FormCompleted onNavigate={onNavigate} />;
     }
   };
 
-  return (
-    <main>
-      {renderCurrentStep()}
-    </main>
-  );
+  return <main>{renderStep()}</main>;
 };
 
 export default FormContainer;

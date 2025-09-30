@@ -15,7 +15,7 @@ export const clearStorage = () => {
 };
 
 // Returns the step of the form
-export const checkProfileCompletion = () => {
+export const getStep = () => {
   const name = getStorageData('name');
   const email = getStorageData('mail');
   

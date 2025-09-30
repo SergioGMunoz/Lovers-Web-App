@@ -1,7 +1,6 @@
 import Button from './Button';
 
-const ErrorView = ({ onNavigate }) => {
-  
+const HomeView = ({ onNavigate }) => {
   const handleCreateAccount = () => {
     onNavigate('form');
   };
@@ -9,13 +8,13 @@ const ErrorView = ({ onNavigate }) => {
   return (
     <main>
       <section className="col-section">
-        <h1>¡Ups! Tu perfil no está completo 😅</h1>
+        <h1>Enamorate de tu próximo gran amor y no solo de tu perro 🐶</h1>
         <Button onClick={handleCreateAccount}>
-          Completar mi perfil
+          Incribirse ahora
         </Button>
       </section>
     </main>
   );
 };
 
-export default ErrorView;
+export default HomeView;

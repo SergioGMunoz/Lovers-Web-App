@@ -1,56 +1,54 @@
-import { useState, useEffect } from 'react'
-import './App.css'
-import Header from './modules/Header'
-import Footer from './modules/Footer'
-import FormContainer from './modules/form/FormContainer'
-import ErrorView from './modules/ErrorView'
-import { checkProfileCompletion, getResumeStep } from './utils/profileUtils'
+import { useState, useEffect } from "react";
+import "./App.css";
+import Header from "./modules/Header";
+import Footer from "./modules/Footer";
+import ErrorView from "./modules/ErrorView";
+import HomeView from "./modules/HomeView";
+
+import { getStep } from "./utils/storage";
 
 function App() {
-  const [currentView, setCurrentView] = useState('form'); 
-  const [formStep, setFormStep] = useState(0);
+  const [currentView, setCurrentView] = useState("home");
 
   useEffect(() => {
-    const profileStatus = checkProfileCompletion();
-    const resumeStep = getResumeStep();
-    
-    if (resumeStep >= 0) {
-      // Si hay datos parciales, ir al formulario en el step correspondiente
-      setFormStep(resumeStep);
-      setCurrentView('form');
-    } else if (profileStatus.isComplete) {
-      // Si el perfil está completo, mostrar perfil (por ahora form completado)
-      setCurrentView('completed');
+    switch (getStep()) {
+      case -1: // Form completed
+        setCurrentView("completed");
+        break;
+      case 0: // Form not inicialiced
+        setCurrentView("home");
+        break;
+      default: // Form not completed yet
+        setCurrentView("error");
+        break;
     }
   }, []);
 
   const handleNavigate = (view) => {
-    if (view === 'form') {
-      const resumeStep = getResumeStep();
-      setFormStep(Math.max(0, resumeStep));
-      setCurrentView('form');
-    } else {
-      setCurrentView(view);
-    }
+    setCurrentView(view);
   };
 
   const renderCurrentView = () => {
     switch (currentView) {
-      case 'form':
-        return <FormContainer initialStep={formStep} onComplete={() => setCurrentView('completed')} />;
-      case 'error':
-        return <ErrorView onNavigate={handleNavigate} />;
-      case 'completed':
+      case "completed":
         return (
           <main>
             <section className="col-section">
-              <h1>¡Perfil completado! 🎉</h1>
-              <p>Tu perfil está listo. Aquí iría el componente ProfileView.</p>
+              <h1>Tienes un perfil creado 🎉</h1>
+              <Button onClick={handleNavigate("profile")}>
+                Ver perfil
+              </Button>
             </section>
           </main>
         );
+      case "home":
+        return <HomeView onNavigate={handleNavigate} />;
+      case "error":
+        return <ErrorView onNavigate={handleNavigate} />;
+      case "profile":
+        return <Profile />;
       default:
-        return <FormContainer initialStep={0} onComplete={() => setCurrentView('completed')} />;
+        return <h1>Error 404, esta página no existe</h1>;
     }
   };
 
@@ -60,7 +58,7 @@ function App() {
       {renderCurrentView()}
       <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
