@@ -4,13 +4,16 @@ import Header from "./modules/Header";
 import Footer from "./modules/Footer";
 import ErrorView from "./modules/ErrorView";
 import HomeView from "./modules/HomeView";
+import Button from "./modules/Button";
+import Profile from "./modules/Profile";
+import Form from "./modules/form/FormContainer";
 
 import { getStep } from "./utils/storage";
 
 function App() {
   const [currentView, setCurrentView] = useState("home");
 
-  useEffect(() => {
+  const changeStep = () => {
     switch (getStep()) {
       case -1: // Form completed
         setCurrentView("completed");
@@ -22,22 +25,30 @@ function App() {
         setCurrentView("error");
         break;
     }
+  };
+
+  useEffect(() => {
+    changeStep();
   }, []);
 
   const handleNavigate = (view) => {
-    setCurrentView(view);
+    // If view is null generete it
+    if (!view) {
+      changeStep();
+    } else {
+      setCurrentView(view);
+    }
   };
 
   const renderCurrentView = () => {
     switch (currentView) {
       case "completed":
+        console.log('Entering complete VIEW')
         return (
           <main>
             <section className="col-section">
               <h1>Tienes un perfil creado 🎉</h1>
-              <Button onClick={handleNavigate("profile")}>
-                Ver perfil
-              </Button>
+              <Button onClick={() => handleNavigate("profile")}>Ver perfil</Button>
             </section>
           </main>
         );
@@ -45,8 +56,10 @@ function App() {
         return <HomeView onNavigate={handleNavigate} />;
       case "error":
         return <ErrorView onNavigate={handleNavigate} />;
+      case "form":
+        return <Form onNavigate={handleNavigate} />;
       case "profile":
-        return <Profile />;
+        return <Profile onNavigate={handleNavigate}/>;
       default:
         return <h1>Error 404, esta página no existe</h1>;
     }

@@ -1,10 +1,12 @@
 import {clearStorage} from './../utils/storage.js'
+import Button from './Button'
+
 
 const ErrorView = ({ onNavigate }) => {
 
   const handleCreateAccount = () => {
     clearStorage();
-    onNavigate("home");
+    onNavigate();
   };
 
   return (

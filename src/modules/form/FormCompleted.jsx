@@ -8,8 +8,7 @@ const FormCompleted = ({ onNavigate }) => {
 
   return (
     <section className="col-section">
-      <h1>¡Enhorabuena! 🎉</h1>
-      <h2>Has completado el formulario exitosamente</h2>
+      <h1>Cuenta ya creada 🎉</h1>
       <Button onClick={handleViewProfile}>
         Ver mi perfil
       </Button>
