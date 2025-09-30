@@ -33,17 +33,19 @@ body {
 body {
   display: flex;
   flex-direction: column;
-}
+  min-height: 100vh; 
 
 main {
-  flex: 1;
+  flex: 1; /* Ocupa todo el espacio disponible */
+  min-height: 0; /* Permite que los elementos internos se contraigan */
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1rem; /* Añadir un poco de padding para evitar que toque los bordes */
 }
 
 #root {
-  height: 100vh;
+  min-height: 100vh; /* Usar min-height en lugar de height fija */
   display: flex;
   flex-direction: column;
 }
@@ -97,6 +99,7 @@ footer {
   color: white;
   text-align: center;
   padding: 1rem;
+  margin-top: auto; 
 }
 
 /* Buttons */
@@ -155,31 +158,6 @@ form {
   align-items: center;
 }
 
-/* Photos section */
-.photos-grid {
-  display: flex;
-  flex-direction: row;
-  gap: 2rem;
-  margin: 1rem;
-}
-
-.photo-upload {
-  aspect-ratio: 1;
-  width: 100%;
-}
-
-.photo-label {
-  cursor: pointer;
-}
-
-.placeholder-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 1rem;
-  padding: 0.5rem;
-}
-
 /* Biography section */
 .bio-form {
   display: flex;
@@ -211,10 +189,13 @@ form {
     flex-direction: column;
   }
 
+  main {
+    padding: 0.5rem;
+  }
+
   html,
   body {
     height: 100%;
     margin: 0;
-    overflow: visible;
   }
 }
