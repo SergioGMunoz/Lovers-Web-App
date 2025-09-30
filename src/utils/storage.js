@@ -1,4 +1,5 @@
-// This page manages the storage
+// This page manages the local storage
+
 export const storageData = (key, value) => {
   localStorage.setItem(key, value);
   console.log(`${key}:${value} correctly uploaded`);
@@ -10,5 +11,16 @@ export const getStorageData = (key) => {
 
 export const clearStorage = () => {
   localStorage.clear();
-  console.log("Local storage cleared.");
+  console.log("Local storage cleared");
+};
+
+// Returns the step of the form
+export const checkProfileCompletion = () => {
+  const name = getStorageData('name');
+  const email = getStorageData('mail');
+  
+  if (!name) return 0; 
+  if (!email) return 1; 
+  
+  return -1; 
 };

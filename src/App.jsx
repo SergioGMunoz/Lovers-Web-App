@@ -7,10 +7,9 @@ import ErrorView from './modules/ErrorView'
 import { checkProfileCompletion, getResumeStep } from './utils/profileUtils'
 
 function App() {
-  const [currentView, setCurrentView] = useState('form'); // 'form', 'profile', 'error'
+  const [currentView, setCurrentView] = useState('form'); 
   const [formStep, setFormStep] = useState(0);
 
-  // Al cargar la app, determinar dónde debe estar el usuario
   useEffect(() => {
     const profileStatus = checkProfileCompletion();
     const resumeStep = getResumeStep();
