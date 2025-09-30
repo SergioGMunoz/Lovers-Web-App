@@ -75,6 +75,11 @@ nav,
   width: 5rem;
 }
 
+.logo-img:hover{
+  cursor: pointer;
+  opacity: 90%;
+}
+
 /* Sections */
 .col-section {
   display: flex;

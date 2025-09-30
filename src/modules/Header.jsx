@@ -2,6 +2,10 @@ import logoLovers from '../assets/logo_lovers.png'
 import Button from './Button'
 
 const Header = ({ onNavigate }) => {
+
+  const handleHome = () => {
+    onNavigate();
+  };
   
   const handleCreateAccount = () => {
     onNavigate('form');
@@ -15,7 +19,7 @@ const Header = ({ onNavigate }) => {
     <header>
       <nav>
         <div className="nav-logo">
-          <a><img className="logo-img" src={logoLovers} alt="Logo Lovers" /></a>
+          <a onClick={handleHome}><img className="logo-img" src={logoLovers} alt="Logo Lovers" /></a>
         </div>
         <div className="nav-buttons">
           <div>
