@@ -1,16 +1,64 @@
-import './App.css'
-import Header from './modules/Header'
-import Footer from './modules/Footer'
-import FormContainer from './modules/form/FormContainer'
+import { useState, useEffect } from "react";
+import "./App.css";
+import Header from "./modules/Header";
+import Footer from "./modules/Footer";
+import ErrorView from "./modules/ErrorView";
+import HomeView from "./modules/HomeView";
+
+import { getStep } from "./utils/storage";
 
 function App() {
+  const [currentView, setCurrentView] = useState("home");
+
+  useEffect(() => {
+    switch (getStep()) {
+      case -1: // Form completed
+        setCurrentView("completed");
+        break;
+      case 0: // Form not inicialiced
+        setCurrentView("home");
+        break;
+      default: // Form not completed yet
+        setCurrentView("error");
+        break;
+    }
+  }, []);
+
+  const handleNavigate = (view) => {
+    setCurrentView(view);
+  };
+
+  const renderCurrentView = () => {
+    switch (currentView) {
+      case "completed":
+        return (
+          <main>
+            <section className="col-section">
+              <h1>Tienes un perfil creado 🎉</h1>
+              <Button onClick={handleNavigate("profile")}>
+                Ver perfil
+              </Button>
+            </section>
+          </main>
+        );
+      case "home":
+        return <HomeView onNavigate={handleNavigate} />;
+      case "error":
+        return <ErrorView onNavigate={handleNavigate} />;
+      case "profile":
+        return <Profile />;
+      default:
+        return <h1>Error 404, esta página no existe</h1>;
+    }
+  };
+
   return (
     <div className="App">
-      <Header />
-      <FormContainer />
+      <Header onNavigate={handleNavigate} />
+      {renderCurrentView()}
       <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -1,50 +1,36 @@
-import { useState } from 'react';
-import FormName from './FormName';
-import FormEmail from './FormEmail';
+import { useState } from "react";
+import FormName from "./FormName";
+import FormEmail from "./FormEmail";
+import FormCompleted from "./FormCompleted";
+import { getStep } from "../../utils/storage";
 
-const FormContainer = () => {
-  const [currentStep, setCurrentStep] = useState(0);
+const FormContainer = ({ onNavigate }) => {
+  const [step, setStep] = useState(getStep());
 
   const nextStep = () => {
-    setCurrentStep(prevStep => prevStep + 1);
+    setStep(step + 1);
   };
 
   const prevStep = () => {
-    setCurrentStep(prevStep => Math.max(0, prevStep - 1));
+    if (step > 0) setStep(step - 1);
   };
 
-  const renderCurrentStep = () => {
-    switch (currentStep) {
+  const renderStep = () => {
+    switch (step) {
       case 0:
         return (
-          <FormName 
-            onNext={nextStep}
-            onBack={prevStep}
-            isFirstStep={true}
-          />
+          <FormName onNext={nextStep} onBack={prevStep} isFirstStep={true} />
         );
       case 1:
         return (
-          <FormEmail 
-            onNext={nextStep}
-            onBack={prevStep}
-          />
+          <FormEmail onNext={nextStep} onBack={prevStep} />
         );
       default:
-        return (
-          <div className="col-section">
-            <h1>¡Formulario completado! 🎉</h1>
-            <p>Has completado los primeros pasos del registro.</p>
-          </div>
-        );
+        return <FormCompleted onNavigate={onNavigate} />;
     }
   };
 
-  return (
-    <main>
-      {renderCurrentStep()}
-    </main>
-  );
+  return <main>{renderStep()}</main>;
 };
 
 export default FormContainer;

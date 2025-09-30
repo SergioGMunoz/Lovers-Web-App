@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { validateEmail } from '../../utils/validations';
 import { storageData } from '../../utils/storage';
+import FormControls from './FormControls';
 
 const FormEmail = ({ onNext, onBack }) => {
   const [email, setEmail] = useState('');
@@ -22,6 +23,10 @@ const FormEmail = ({ onNext, onBack }) => {
     setEmail(e.target.value);
   };
 
+  const handleReset = () => {
+    setEmail('');
+  };
+
   return (
     <section className="col-section">
       <h1>Tu mejor mail... ✉️</h1>
@@ -30,32 +35,15 @@ const FormEmail = ({ onNext, onBack }) => {
           type="email" 
           name="mail" 
           className="input-text"
+          placeholder="correo@empresa.com"
           value={email}
           onChange={handleInputChange}
         />
-        <div className="form-controls">
-          <button 
-            type="button" 
-            className="btn-form btn-back"
-            onClick={onBack}
-          >
-            Atrás
-          </button>
-          <button 
-            type="reset" 
-            className="btn-form btn-restart"
-            onClick={() => setEmail('')}
-          >
-            Resetear
-          </button>
-          <button 
-            type="submit" 
-            className="btn-form btn-continue"
-            disabled={!isValid}
-          >
-            Continuar
-          </button>
-        </div>
+        <FormControls
+          onBack={onBack}
+          isValid={isValid}
+          onReset={handleReset}
+        />
       </form>
     </section>
   );

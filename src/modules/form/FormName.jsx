@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { validateName } from '../../utils/validations';
 import { storageData } from '../../utils/storage';
+import FormControls from './FormControls';
 
 const FormName = ({ onNext, onBack, isFirstStep }) => {
   const [name, setName] = useState('');
@@ -22,6 +23,10 @@ const FormName = ({ onNext, onBack, isFirstStep }) => {
     setName(e.target.value);
   };
 
+  const handleReset = () => {
+    setName('');
+  };
+
   return (
     <section className="col-section">
       <h1>Tu nombre es... 🙂</h1>
@@ -30,33 +35,16 @@ const FormName = ({ onNext, onBack, isFirstStep }) => {
           type="text" 
           name="name" 
           className="input-text"
+          placeholder="Tu nombre (3-15 caracteres)"
           value={name}
           onChange={handleInputChange}
         />
-        <div className="form-controls">
-          <button 
-            type="button" 
-            className="btn-form btn-back"
-            disabled={isFirstStep}
-            onClick={onBack}
-          >
-            Atrás
-          </button>
-          <button 
-            type="reset" 
-            className="btn-form btn-restart"
-            onClick={() => setName('')}
-          >
-            Resetear
-          </button>
-          <button 
-            type="submit" 
-            className="btn-form btn-continue"
-            disabled={!isValid}
-          >
-            Continuar
-          </button>
-        </div>
+        <FormControls
+          onBack={onBack}
+          isFirstStep={isFirstStep}
+          isValid={isValid}
+          onReset={handleReset}
+        />
       </form>
     </section>
   );

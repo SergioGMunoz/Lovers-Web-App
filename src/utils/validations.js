@@ -1,7 +1,7 @@
 // Name validation
 export const validateName = (name) => {
   const length = name.trim().length;
-  return length > 0 && length < 15;
+  return length >= 3 && length <= 15;
 };
 
 // Email validation

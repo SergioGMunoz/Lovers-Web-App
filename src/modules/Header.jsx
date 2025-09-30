@@ -1,6 +1,16 @@
 import logoLovers from '../assets/logo_lovers.png'
+import Button from './Button'
 
-const Header = () => {
+const Header = ({ onNavigate }) => {
+  
+  const handleCreateAccount = () => {
+    onNavigate('form');
+  };
+
+  const handleViewProfile = () => {
+    onNavigate('profile'); 
+  };
+
   return (
     <header>
       <nav>
@@ -9,10 +19,14 @@ const Header = () => {
         </div>
         <div className="nav-buttons">
           <div>
-            <button className="btn-primary btn-sign-up">Crear cuenta</button>
+            <Button onClick={handleCreateAccount}>
+              Crear cuenta
+            </Button>
           </div>
           <div>
-            <button id="profile-btn" className="btn-primary">Mi perfil</button>
+            <Button onClick={handleViewProfile}>
+              Mi perfil
+            </Button>
           </div>
         </div>
       </nav>
