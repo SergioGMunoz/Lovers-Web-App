@@ -36,8 +36,6 @@ function App() {
     if (!view) {
       changeStep();
     } else {
-      // Not completed the form yet and try to profile
-      if (view === "profile" && getStep() !== -1) view = "error";
       setCurrentView(view);
     }
   };
@@ -63,7 +61,8 @@ function App() {
       case "form":
         return <Form onNavigate={handleNavigate} />;
       case "profile":
-        return <Profile onNavigate={handleNavigate} />;
+      // Not completed the form yet and try to profile
+        return (<Profile onNavigate={handleNavigate} /> === null) ? <Profile onNavigate={handleNavigate}/> : <ErrorView onNavigate={handleNavigate} />;
       default:
         return <h1>Error 404, esta página no existe</h1>;
     }
