@@ -35,7 +35,7 @@ const FormSocialLink = ({ onNext, onBack }) => {
           type="url" 
           name="socialLink" 
           className="input-text"
-          placeholder="https://instagram.com/tuusuario"
+          placeholder="https://tu-enlace"
           value={socialLink}
           onChange={handleInputChange}
         />
