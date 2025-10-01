@@ -19,12 +19,12 @@ const FormHobbies = ({ onNext, onBack }) => {
     }
   };
 
-  const handleHobbyChange = (index, value) => {
+    const handleHobbyChange = (index, value) => {
     const newHobbies = [...hobbies];
     newHobbies[index] = value;
-    const filteredHobbies = newHobbies.filter((hobby) => hobby.trim() !== "");
-    setHobbies(filteredHobbies);
-  };
+    setHobbies(newHobbies);
+    };
+
 
   const handleReset = () => {
     setHobbies(["", "", ""]);

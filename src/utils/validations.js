@@ -39,24 +39,28 @@ export const validateSexualOrientation = (orientation) => {
 export const validateRelationshipType = (types) => {
   return Array.isArray(types) && types.length > 0;
 };
-
 export const validateHobbies = (hobbies) => {
-  if (!Array.isArray(hobbies) || hobbies.length <= 0) return false;
+  if (!Array.isArray(hobbies) || hobbies.length === 0) return false;
 
   const regex = /^[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ0-9\s]{4,20}$/;
-  if (!regex.test(hobbies[0])) return false;
 
-  // Validate optional hobbies 2 and 3 if they exist
-  for (let i = 1; i < hobbies.length; i++) {
-    const hobby = hobbies[i]?.trim();
-    if (hobby) {
-      if (!regex.test(hobby)) {
-        return false;
-      }
+  // Al menos un hobby válido
+  const hasValidHobby = hobbies.some(
+    (hobby) => hobby.trim().length >= 4 && regex.test(hobby.trim())
+  );
+ 
+  if (!hasValidHobby) return false;
+
+  for (let hobby of hobbies) {
+    const trimmed = hobby.trim();
+    if (trimmed && !regex.test(trimmed)) {
+      return false;
     }
   }
+
   return true;
 };
+
 
 export const validateBirthDate = (birthDate) => {
   if (!birthDate) return false;
