@@ -62,6 +62,7 @@ function App() {
         return <Form onNavigate={handleNavigate} />;
       case "profile":
         // Not completed the form yet and try to profile
+        console.log('USER DATA' ,getUserData())
         if (getStep() !== -1) return <ErrorView onNavigate={handleNavigate} />;
         return <Profile onNavigate={handleNavigate} userData={getUserData()} />;
       default:
