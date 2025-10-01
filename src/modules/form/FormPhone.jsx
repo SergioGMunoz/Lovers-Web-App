@@ -1,49 +1,48 @@
 import { useState, useEffect } from 'react';
-import { validateName } from '../../utils/validations';
+import { validatePhone } from '../../utils/validations';
 import { storageData } from '../../utils/storage';
 import FormControls from './FormControls';
 
-const FormName = ({ onNext, onBack, isFirstStep }) => {
-  const [name, setName] = useState('');
+const FormPhone = ({ onNext, onBack }) => {
+  const [phone, setPhone] = useState('');
   const [isValid, setIsValid] = useState(false);
 
   useEffect(() => {
-    setIsValid(validateName(name));
-  }, [name]);
+    setIsValid(validatePhone(phone));
+  }, [phone]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isValid) {
-      storageData('name', name.trim());
+      storageData('phone', phone.trim());
       onNext();
     }
   };
 
   const handleInputChange = (e) => {
-    setName(e.target.value);
+    setPhone(e.target.value);
   };
 
   const handleReset = () => {
-    setName('');
+    setPhone('');
   };
 
   return (
     <section className="col-section">
-      <h1>Tu nombre es... 🙂</h1>
+      <h1>Tu teléfono es... 📱</h1>
       <form onSubmit={handleSubmit}>
         <input 
-          type="text" 
-          name="name" 
+          type="tel" 
+          name="phone" 
           className="input-text"
-          placeholder="Tu nombre (2-10 caracteres)"
-          minLength="2"
-          maxLength="10"
-          value={name}
+          placeholder="123456789 o +34123456789"
+          minLength="9"
+          maxLength="12"
+          value={phone}
           onChange={handleInputChange}
         />
         <FormControls
           onBack={onBack}
-          isFirstStep={isFirstStep}
           isValid={isValid}
           onReset={handleReset}
         />
@@ -52,4 +51,4 @@ const FormName = ({ onNext, onBack, isFirstStep }) => {
   );
 };
 
-export default FormName;
+export default FormPhone;
