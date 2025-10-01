@@ -5,7 +5,7 @@ import Footer from "./modules/Footer";
 import ErrorView from "./modules/ErrorView";
 import HomeView from "./modules/HomeView";
 import Button from "./modules/Button";
-import Profile from "./modules/Profile";
+import Profile from "./modules/profile/Profile";
 import Form from "./modules/form/FormContainer";
 
 import { getStep } from "./utils/storage";
@@ -43,12 +43,14 @@ function App() {
   const renderCurrentView = () => {
     switch (currentView) {
       case "completed":
-        console.log('Entering complete VIEW')
+        console.log("Entering complete VIEW");
         return (
           <main>
             <section className="col-section">
               <h1>Tienes un perfil creado 🎉</h1>
-              <Button onClick={() => handleNavigate("profile")}>Ver perfil</Button>
+              <Button onClick={() => handleNavigate("profile")}>
+                Ver perfil
+              </Button>
             </section>
           </main>
         );
@@ -59,7 +61,8 @@ function App() {
       case "form":
         return <Form onNavigate={handleNavigate} />;
       case "profile":
-        return <Profile onNavigate={handleNavigate}/>;
+      // Not completed the form yet and try to profile
+        return (<Profile onNavigate={handleNavigate} /> === null) ? <Profile onNavigate={handleNavigate}/> : <ErrorView onNavigate={handleNavigate} />;
       default:
         return <h1>Error 404, esta página no existe</h1>;
     }
