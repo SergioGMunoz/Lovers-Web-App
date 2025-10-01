@@ -38,12 +38,12 @@ const FormSexualOrientation = ({ onNext, onBack }) => {
           onChange={handleOrientationChange}
         >
           <option value="">Selecciona una opción</option>
-          <option value="heterosexual">Heterosexual</option>
-          <option value="homosexual">Homosexual</option>
-          <option value="bisexual">Bisexual</option>
-          <option value="pansexual">Pansexual</option>
-          <option value="asexual">Asexual</option>
-          <option value="demisexual">Demisexual</option>
+          <option value="Heterosexual">Heterosexual</option>
+          <option value="Homosexual">Homosexual</option>
+          <option value="Bisexual">Bisexual</option>
+          <option value="Pansexual">Pansexual</option>
+          <option value="Asexual">Asexual</option>
+          <option value="Demisexual">Demisexual</option>
         </select>
 
         <FormControls
