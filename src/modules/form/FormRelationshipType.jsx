@@ -43,7 +43,7 @@ const FormRelationshipType = ({ onNext, onBack }) => {
             <input
               type="checkbox"
               name="relationshipType"
-              value="seria"
+              value=" Seria"
               onChange={handleCheckboxChange}
             />
             Seria
@@ -54,7 +54,7 @@ const FormRelationshipType = ({ onNext, onBack }) => {
             <input
               type="checkbox"
               name="relationshipType"
-              value="casual"
+              value=" Casual"
               onChange={handleCheckboxChange}
             />
             Casual
@@ -65,7 +65,7 @@ const FormRelationshipType = ({ onNext, onBack }) => {
             <input
               type="checkbox"
               name="relationshipType"
-              value="amistad"
+              value=" Amistad"
               onChange={handleCheckboxChange}
             />
             Amistad

@@ -16,6 +16,7 @@ const FormGenderIdentity = ({ onNext, onBack }) => {
     e.preventDefault();
     if (isValid) {
       const genderData =  gender === 'otro' ? otherText.trim() : gender;
+
       storageData('genderIdentity', genderData);
       onNext();
     }
@@ -46,8 +47,7 @@ const FormGenderIdentity = ({ onNext, onBack }) => {
             <input 
               type="radio" 
               name="gender" 
-              value="masculino"
-              checked={gender === 'masculino'}
+              value="Hombre"
               onChange={handleGenderChange}
             />
             Masculino
@@ -58,8 +58,7 @@ const FormGenderIdentity = ({ onNext, onBack }) => {
             <input 
               type="radio" 
               name="gender" 
-              value="femenino"
-              checked={gender === 'femenino'}
+              value="Mujer"
               onChange={handleGenderChange}
             />
             Femenino
@@ -70,8 +69,7 @@ const FormGenderIdentity = ({ onNext, onBack }) => {
             <input 
               type="radio" 
               name="gender" 
-              value="no-binario"
-              checked={gender === 'no-binario'}
+              value="No binario"
               onChange={handleGenderChange}
             />
             No binario

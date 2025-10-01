@@ -38,6 +38,7 @@ const FormSocialLink = ({ onNext, onBack }) => {
           placeholder="https://tu-enlace"
           value={socialLink}
           onChange={handleInputChange}
+          maxLength={100}
         />
         <FormControls
           onBack={onBack}
