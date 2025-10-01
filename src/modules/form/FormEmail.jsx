@@ -35,7 +35,9 @@ const FormEmail = ({ onNext, onBack }) => {
           type="email" 
           name="mail" 
           className="input-text"
-          placeholder="correo@empresa.com"
+          placeholder="correo@empresa.com (6-20 caracteres)"
+          minLength="6"
+          maxLength="20"
           value={email}
           onChange={handleInputChange}
         />

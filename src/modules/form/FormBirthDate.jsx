@@ -1,49 +1,47 @@
 import { useState, useEffect } from 'react';
-import { validateName } from '../../utils/validations';
+import { validateBirthDate } from '../../utils/validations';
 import { storageData } from '../../utils/storage';
 import FormControls from './FormControls';
 
-const FormName = ({ onNext, onBack, isFirstStep }) => {
-  const [name, setName] = useState('');
+const FormBirthDate = ({ onNext, onBack }) => {
+  const [birthDate, setBirthDate] = useState('');
   const [isValid, setIsValid] = useState(false);
 
   useEffect(() => {
-    setIsValid(validateName(name));
-  }, [name]);
+    setIsValid(validateBirthDate(birthDate));
+  }, [birthDate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isValid) {
-      storageData('name', name.trim());
+      storageData('birthDate', birthDate);
       onNext();
     }
   };
 
-  const handleInputChange = (e) => {
-    setName(e.target.value);
+  const handleDateChange = (e) => {
+    setBirthDate(e.target.value);
   };
 
   const handleReset = () => {
-    setName('');
+    setBirthDate('');
   };
 
   return (
     <section className="col-section">
-      <h1>Tu nombre es... 🙂</h1>
+      <h1>Tu fecha de nacimiento es... 🎂</h1>
+      <p>Obligatorio mayor de 18 años</p>
       <form onSubmit={handleSubmit}>
         <input 
-          type="text" 
-          name="name" 
+          type="date" 
+          name="birthDate" 
           className="input-text"
-          placeholder="Tu nombre (2-10 caracteres)"
-          minLength="2"
-          maxLength="10"
-          value={name}
-          onChange={handleInputChange}
+          value={birthDate}
+          onChange={handleDateChange}
         />
+
         <FormControls
           onBack={onBack}
-          isFirstStep={isFirstStep}
           isValid={isValid}
           onReset={handleReset}
         />
@@ -52,4 +50,4 @@ const FormName = ({ onNext, onBack, isFirstStep }) => {
   );
 };
 
-export default FormName;
+export default FormBirthDate;
