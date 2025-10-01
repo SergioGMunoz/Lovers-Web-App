@@ -1,5 +1,5 @@
-import {clearStorage} from './../utils/storage.js'
-import Button from './Button'
+import {clearStorage} from '../../utils/storage.js'
+import Button from '../Button.jsx'
 
 
 const ErrorView = ({ onNavigate }) => {
@@ -8,6 +8,8 @@ const ErrorView = ({ onNavigate }) => {
     clearStorage();
     onNavigate();
   };
+
+  
 
   return (
     <main>
