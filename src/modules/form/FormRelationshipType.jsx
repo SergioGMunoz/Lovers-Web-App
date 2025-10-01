@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import { validateRelationshipType } from '../../utils/validations';
-import { storageData } from '../../utils/storage';
-import FormControls from './FormControls';
+import { useState, useEffect } from "react";
+import { validateRelationshipType } from "../../utils/validations";
+import { storageData } from "../../utils/storage";
+import FormControls from "./FormControls";
 
 const FormRelationshipType = ({ onNext, onBack }) => {
   const [relationshipTypes, setRelationshipTypes] = useState([]);
@@ -14,7 +14,7 @@ const FormRelationshipType = ({ onNext, onBack }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isValid) {
-      storageData('relationshipType', relationshipTypes);
+      storageData("relationshipType", relationshipTypes);
       onNext();
     }
   };
@@ -26,7 +26,7 @@ const FormRelationshipType = ({ onNext, onBack }) => {
     if (isChecked) {
       setRelationshipTypes([...relationshipTypes, value]);
     } else {
-      setRelationshipTypes(relationshipTypes.filter(type => type !== value));
+      setRelationshipTypes(relationshipTypes.filter((type) => type !== value));
     }
   };
 
@@ -40,11 +40,10 @@ const FormRelationshipType = ({ onNext, onBack }) => {
       <form onSubmit={handleSubmit}>
         <div>
           <label>
-            <input 
-              type="checkbox" 
-              name="relationshipType" 
+            <input
+              type="checkbox"
+              name="relationshipType"
               value="seria"
-              checked={relationshipTypes.includes('seria')}
               onChange={handleCheckboxChange}
             />
             Seria
@@ -52,11 +51,10 @@ const FormRelationshipType = ({ onNext, onBack }) => {
         </div>
         <div>
           <label>
-            <input 
-              type="checkbox" 
-              name="relationshipType" 
+            <input
+              type="checkbox"
+              name="relationshipType"
               value="casual"
-              checked={relationshipTypes.includes('casual')}
               onChange={handleCheckboxChange}
             />
             Casual
@@ -64,22 +62,17 @@ const FormRelationshipType = ({ onNext, onBack }) => {
         </div>
         <div>
           <label>
-            <input 
-              type="checkbox" 
-              name="relationshipType" 
+            <input
+              type="checkbox"
+              name="relationshipType"
               value="amistad"
-              checked={relationshipTypes.includes('amistad')}
               onChange={handleCheckboxChange}
             />
             Amistad
           </label>
         </div>
 
-        <FormControls
-          onBack={onBack}
-          isValid={isValid}
-          onReset={handleReset}
-        />
+        <FormControls onBack={onBack} isValid={isValid} onReset={handleReset} />
       </form>
     </section>
   );
