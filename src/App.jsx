@@ -8,7 +8,7 @@ import Button from "./modules/Button";
 import Profile from "./modules/profile/Profile";
 import Form from "./modules/form/FormContainer";
 
-import { getStep } from "./utils/storage";
+import { getStep, getUserData } from "./utils/storage";
 
 function App() {
   const [currentView, setCurrentView] = useState("home");
@@ -61,8 +61,9 @@ function App() {
       case "form":
         return <Form onNavigate={handleNavigate} />;
       case "profile":
-      // Not completed the form yet and try to profile
-        return (<Profile onNavigate={handleNavigate} /> === null) ? <Profile onNavigate={handleNavigate}/> : <ErrorView onNavigate={handleNavigate} />;
+        // Not completed the form yet and try to profile
+        if (getStep() !== -1) return <ErrorView onNavigate={handleNavigate} />;
+        return <Profile onNavigate={handleNavigate} userData={getUserData()} />;
       default:
         return <h1>Error 404, esta página no existe</h1>;
     }

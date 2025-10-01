@@ -8,6 +8,8 @@
   --font-primary: "Ubuntu", sans-serif;
 }
 
+
+
 /* Text */
 h1,
 h2,
@@ -15,11 +17,18 @@ h3 {
   font-family: var(--font-primary);
   text-align: center;
   color: var(--color-primary);
+  margin: .5rem
 }
 
 p {
-  font-size: 0.7rem;
+  font-size: 1rem;
   font-family: var(--font-primary);
+}
+a{
+  text-decoration: none;
+}
+a:hover{
+  cursor: pointer;
 }
 
 /* Structure */
@@ -190,6 +199,23 @@ label, input, select, option {
   width: 100%;
   resize: none;
 }
+
+/*Profile */
+.badges-container{
+  /* TODO CREAR ESTILO */
+}
+
+.badge{
+  background-color: var(--color-secondary);
+  border-radius: 5rem;
+  padding: 0.1rem 1.5rem;
+}
+
+.badge p{
+  font-size: 0.7rem;
+  color: white;
+}
+
 
 /* Responsive design */
 @media (max-width: 500px) {
