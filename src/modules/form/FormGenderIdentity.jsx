@@ -16,8 +16,7 @@ const FormGenderIdentity = ({ onNext, onBack }) => {
     e.preventDefault();
     if (isValid) {
       const genderData = {
-        gender: gender,
-        otherText: gender === 'otro' ? otherText.trim() : ''
+        gender: gender === 'otro' ? otherText.trim() : gender,
       };
       storageData('genderIdentity', genderData);
       onNext();
