@@ -15,7 +15,7 @@ const FormAgeRange = ({ onNext, onBack }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isValid) {
-      storageData('ageRange', { min: parseInt(minAge), max: parseInt(maxAge) });
+      storageData('ageRange', JSON.stringify({ min: parseInt(minAge), max: parseInt(maxAge) }));
       onNext();
     }
   };
