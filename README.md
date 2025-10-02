@@ -1,86 +1,52 @@
-<!-- Shields / Badges -->
-
 # Lovers Web App
 
-Class project — a dating app profile creation flow built with React. Features a multi-step registration form with real-time validation and local data persistence.
+Class project to collect user information for a dating website registration. This application provides a complete user registration flow with profile management and local data storage.
 
 ## Technologies
 [![React](https://img.shields.io/badge/React-%2320232a.svg?style=flat&logo=react&logoColor=%2361DAFB)](https://reactjs.org/)
+[![Vite](https://img.shields.io/badge/Vite-%23646CFF.svg?style=flat&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![JavaScript](https://img.shields.io/badge/JavaScript-%23F7DF1E.svg?style=flat&logo=javascript&logoColor=black)](https://developer.mozilla.org/docs/Web/JavaScript)
 [![CSS3](https://img.shields.io/badge/CSS3-%231572B6.svg?style=flat&logo=css3&logoColor=white)](https://developer.mozilla.org/docs/Web/CSS)
-[![Vite](https://img.shields.io/badge/Vite-%23646CFF.svg?style=flat&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Figma](https://img.shields.io/badge/Design-Figma-black?style=flat&logo=figma)](https://www.figma.com)
 
 ## Features
-- ✅ Multi-step form with React state management
-- ✅ Real-time input validation
-- ✅ Local data persistence with localStorage
-- ✅ Responsive design
-- ✅ Step navigation (next/previous)
+- ✅ **Create Account**: Complete multi-step registration form
+- ✅ **View Profile**: Display user profile information
+- ✅ **Local Storage**: Data persistence using browser's local storage
 
 ## Project Structure
 ```
 src/
-├── App.jsx                   # Main application component
-├── main.jsx                  # Entry point
+├── App.jsx                   
+├── main.jsx                  
 ├── index.css                 # Global styles
-├── modules/                  # Reusable components
-│   ├── Header.jsx            # Navigation header
-│   ├── Footer.jsx            # App footer
-│   ├── Title.jsx             # Title component
-│   └── form/                 # Form components
-│       ├── FormContainer.jsx # Form navigation logic
-│       ├── FormName.jsx      # Name input step
-│       └── FormEmail.jsx     # Email input step
-├── utils/                    # Utility functions
+├── modules/                  
+│   ├── Header.jsx            
+│   ├── Footer.jsx            
+│   ├── HomeView.jsx          
+│   ├── ErrorView.jsx         
+│   ├── Button.jsx            
+│   ├── form/                 # Form components (registration steps)
+│   └── profile/              # Profile related components
+├── utils/                    
 │   ├── validations.js        # Input validators
-│   └── storage.js            # localStorage helpers
-└── assets/                   # Static resources
-    ├── logo_lovers.png
-    └── import-photo.png
+│   └── storage.js            # localStorage
+└── assets/                   
+    └── logo_lovers.png
 ```
 
-## Getting Started
+## How to Try
 
-### Prerequisites
-- Node.js (v16 or higher)
-- npm or yarn
-
-### Installation
 1. Clone the repository
 ```bash
 git clone https://github.com/SergioGMunoz/Lovers-Web-App.git
-cd Lovers-Web-App
 ```
 
-2. Install dependencies
-```bash
-npm install
-```
-
-3. Start development server
-```bash
-npm run dev
-```
-
-4. Open your browser and navigate to `http://localhost:5173`
-
-## How to Use
-1. Fill out the registration form step by step
-2. Data is automatically validated in real-time
-3. Progress is saved to localStorage as you go
-4. Use "Continue" to move forward or "Back" to go to previous steps
-
-## Available Scripts
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
+2. Open the `dist` folder and open the `index.html` file in your browser
 
 ## Future Improvements
-- Add remaining form steps (hobbies, bio, photos)
-- Implement profile view component
-- Add backend API integration
-- User authentication system
-- Photo upload functionality
-- Chat features
-
+- **Backend**: Server integration
+- **Database**: Database integration
+- **Find Partner Screen**: Match discovery functionality
+- **Chats Screen**: List of conversations
+- **Chat Screen**: Individual chat interface
