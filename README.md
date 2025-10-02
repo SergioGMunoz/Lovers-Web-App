@@ -34,6 +34,30 @@ src/
 └── assets/                   
     └── logo_lovers.png
 ```
+## Component Architecture
+```mermaid
+graph LR
+    A[App.jsx] --> B[Header.jsx]
+    A --> C[HomeView.jsx]
+    A --> D[Footer.jsx]
+    
+    C --> E[FormContainer.jsx]
+    E --> F[Form Components]
+    E --> G[FormControls.jsx]
+    
+    F --> H[Input Forms]
+    H --> I[FormName]
+    H --> J[FormEmail]
+    H --> K[FormBirthDate]
+    H --> L[Otros...]
+    
+    A --> M[Profile.jsx]
+    M --> N[ProfileBadge.jsx]
+    
+    F --> O[validations.js]
+    E --> P[storage.js]
+```
+
 
 ## How to Try
 
