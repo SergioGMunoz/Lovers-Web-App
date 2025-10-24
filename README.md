@@ -1,40 +1,45 @@
 # Lovers Web App
 
-Class project to collect user information for a dating website registration. This application provides a complete user registration flow with profile management and local data storage.
+> 🚧 **En desarrollo:** esta aplicación aún no ha sido implementada.  
+> El sistema se encuentra en fase de definición y diseño de requisitos.
 
-## Technologies
+Proyecto de clase para recopilar información de usuarios para el registro en un sitio web de citas. Esta aplicación proporciona un flujo completo de registro de usuario con gestión de perfil y almacenamiento local de datos.
+
+## ⚙️ Tecnologías
 [![React](https://img.shields.io/badge/React-%2320232a.svg?style=flat&logo=react&logoColor=%2361DAFB)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite-%23646CFF.svg?style=flat&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![JavaScript](https://img.shields.io/badge/JavaScript-%23F7DF1E.svg?style=flat&logo=javascript&logoColor=black)](https://developer.mozilla.org/docs/Web/JavaScript)
 [![CSS3](https://img.shields.io/badge/CSS3-%231572B6.svg?style=flat&logo=css3&logoColor=white)](https://developer.mozilla.org/docs/Web/CSS)
-[![Figma](https://img.shields.io/badge/Design-Figma-black?style=flat&logo=figma)](https://www.figma.com)
+[![Figma](https://img.shields.io/badge/Diseño-Figma-black?style=flat&logo=figma)](https://www.figma.com)
 
-## Features
-- ✅ **Create Account**: Complete multi-step registration form
-- ✅ **View Profile**: Display user profile information
-- ✅ **Local Storage**: Data persistence using browser's local storage
+## 🔧 Funcionalidades
+- ✅ **Crear Cuenta**: Formulario de registro completo en múltiples pasos  
+- ✅ **Ver Perfil**: Visualización de la información del perfil de usuario  
+- ✅ **Almacenamiento Local**: Persistencia de datos usando el almacenamiento local del navegador  
 
-## Project Structure
+
+## 🏗️ Project Structure
 ```
 src/
-├── App.jsx                   
-├── main.jsx                  
-├── index.css                 # Global styles
-├── modules/                  
-│   ├── Header.jsx            
-│   ├── Footer.jsx            
-│   ├── HomeView.jsx          
-│   ├── ErrorView.jsx         
-│   ├── Button.jsx            
-│   ├── form/                 # Form components (registration steps)
-│   └── profile/              # Profile related components
-├── utils/                    
-│   ├── validations.js        # Input validators
-│   └── storage.js            # localStorage
-└── assets/                   
-    └── logo_lovers.png
+├── App.jsx
+├── main.jsx
+├── index.css # Estilos globales
+├── modules/
+│ ├── Header.jsx
+│ ├── Footer.jsx
+│ ├── HomeView.jsx
+│ ├── ErrorView.jsx
+│ ├── Button.jsx
+│ ├── form/ # Componentes del formulario (pasos del registro)
+│ └── profile/ # Componentes relacionados con el perfil
+├── utils/
+│ ├── validations.js # Validadores de entradas
+│ └── storage.js # LocalStorage
+└── assets/
+└── logo_lovers.png
 ```
-## Component Architecture
+
+## 🧱 Arquitectura de Componentes
 ```mermaid
 graph LR
     A[App.jsx] --> B[Header.jsx]
@@ -58,19 +63,18 @@ graph LR
     E --> P[storage.js]
 ```
 
+## 🚀 Cómo Probarlo
 
-## How to Try
-
-1. Clone the repository
+1. Clona el repositorio
 ```bash
 git clone https://github.com/SergioGMunoz/Lovers-Web-App.git
 ```
 
 2. Open the `dist` folder and open the `index.html` file in your browser
 
-## Future Improvements
-- **Backend**: Server integration
-- **Database**: Database integration
-- **Find Partner Screen**: Match discovery functionality
-- **Chats Screen**: List of conversations
-- **Chat Screen**: Individual chat interface
+## 🛩️ Mejoras futuras
+- **Backend**: Integración con el servidor
+- **Base de Datos**: Integración con la base de datos
+- **Pantalla de Buscar Pareja**: Funcionalidad de descubrimiento de coincidencias
+- **Pantalla de Chats**: Lista de conversaciones
+- **Pantalla de Chat Individual**:Interfaz de chat individual
